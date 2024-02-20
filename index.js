@@ -3,13 +3,14 @@ const express = require("express");
 const app = express();
 const mongodb = require("./db");
 
-app.use(
-  cors({
-    origin: ["*.nomnom-frontend.vercel.app"],
-    methods: ["POST", "GET"],
-    withCredentials: true,
-  })
-);
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://nomnom-frontend.vercel.app/");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  });
 
 // app.use((req,res,next)=>{
 //     res.setHeader('Access-Control-Allow-Origin','https://nomnom-frontend.vercel.app');
