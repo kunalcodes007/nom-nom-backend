@@ -1,19 +1,19 @@
+const cors =require( "cors" );
 const express=require('express');
 const app=express();
 const mongodb=require('./db');
-var cors = require('cors')
 
 app.use(cors({
-    origin:["https://nomnom-frontend.vercel.app"],
+    origin:["https://nomnom-frontend.vercel.app","https://nomnom-frontend.vercel.app"],
     methods:["POST","GET"],
-    credentials:true
+    withcredentials:false,
 }));
 
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','https://nomnom-frontend.vercel.app');
-    res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept');
-    next();
-})
+// app.use((req,res,next)=>{
+//     res.setHeader('Access-Control-Allow-Origin','https://nomnom-frontend.vercel.app');
+//     res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept','HTTP/1.1 200 ok');
+//     next();
+// })
 
 app.use(express.json());
 app.use('/api',require('./Routes/create-user'));
