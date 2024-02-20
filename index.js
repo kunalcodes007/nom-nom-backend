@@ -1,13 +1,9 @@
-const cors =require( "cors" );
+const cors =require('cors')
 const express=require('express');
 const app=express();
 const mongodb=require('./db');
 
-app.use(cors({
-    origin:["https://nomnom-frontend.vercel.app","https://nomnom-frontend.vercel.app"],
-    methods:["POST","GET"],
-    withCredentials:true,
-}));
+app.use(cors());
 
 // app.use((req,res,next)=>{
 //     res.setHeader('Access-Control-Allow-Origin','https://nomnom-frontend.vercel.app');
