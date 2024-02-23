@@ -5,6 +5,7 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt=require('jsonwebtoken');
 const jwt_secret="asdasfw#$343429(&^&%%";
+
 route.post(
   "/create-user",[
   body("email").isEmail(),
@@ -31,6 +32,8 @@ route.post(
     }
   }
 );
+
+
 route.post(
   "/login",
   body("password", "must contain atleast 5 characters").isLength({ min: 5 }),

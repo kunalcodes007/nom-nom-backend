@@ -2,12 +2,16 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongodb = require("./db");
-const { createProxyMiddleware } = require('http-proxy-middleware');
+
 const corsOptions = {
   origin: "https://nomnom-frontend.vercel.app" ,
   credentials: true,
+
 }
+
+
 app.use(cors(corsOptions));
+
 
 // app.use((req, res, next) => {
 //     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -33,15 +37,20 @@ app.use(cors(corsOptions));
 //   app.use('/api', CreateProxyMiddleware({ target: 'https://nomnom-frontend.vercel.app', changeOrigin: true }));
 // }
 
-app.use('/api', createProxyMiddleware({ target: 'https://nomnom-frontend.vercel.app', changeOrigin: true }));
 app.use(express.json());
+
 app.use("/api", require("./Routes/create-user"));
 app.use("/api", require("./Routes/display-data"));
 mongodb();
+
+
 app.get("/", (req, res) => {
   res.send("hello devloper");
 });
 
+
 app.listen("3000",()=>{
-  console.log("Server has started")
+  console.log("Server has started  D")
 })
+
+
