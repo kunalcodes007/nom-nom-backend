@@ -2,6 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongodb = require("./db");
+const {CreateProxyMiddleware}=require('http-proxy-middleware');
 const corsOptions = {
   origin: "https://nomnom-frontend.vercel.app" ,
   credentials: true,
@@ -27,6 +28,10 @@ app.use(cors(corsOptions));
 //     res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept','HTTP/1.1 200 ok');
 //     next();
 // })
+
+module.exports=function(app){
+  app.use('/api', CreateProxyMiddleware({ target: 'https://nomnom-frontend.vercel.app', changeOrigin: true }));
+}
 
 app.use(express.json());
 app.use("/api", require("./Routes/create-user"));
