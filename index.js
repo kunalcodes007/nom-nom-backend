@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 const mongodb = require("./db");
 const corsOptions = {
-  origin: "https://nomnom-frontend.vercel.app" // frontend URI (ReactJS)
+  origin: "https://nomnom-frontend.vercel.app" ,
+  credentials: true,
 }
 app.use(cors(corsOptions));
 
