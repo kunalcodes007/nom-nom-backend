@@ -35,3 +35,7 @@ mongodb();
 app.get("/", (req, res) => {
   res.send("hello devloper");
 });
+
+app.listen("3000",()=>{
+  console.log("Server has started")
+})
