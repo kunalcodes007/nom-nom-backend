@@ -2,7 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongodb = require("./db");
-const {CreateProxyMiddleware}=require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const corsOptions = {
   origin: "https://nomnom-frontend.vercel.app" ,
   credentials: true,
@@ -29,10 +29,11 @@ app.use(cors(corsOptions));
 //     next();
 // })
 
-module.exports=function(app){
-  app.use('/api', CreateProxyMiddleware({ target: 'https://nomnom-frontend.vercel.app', changeOrigin: true }));
-}
+// module.exports=function(app){
+//   app.use('/api', CreateProxyMiddleware({ target: 'https://nomnom-frontend.vercel.app', changeOrigin: true }));
+// }
 
+app.use('/api', createProxyMiddleware({ target: 'https://nomnom-frontend.vercel.app', changeOrigin: true }));
 app.use(express.json());
 app.use("/api", require("./Routes/create-user"));
 app.use("/api", require("./Routes/display-data"));
