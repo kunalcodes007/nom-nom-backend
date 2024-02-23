@@ -15,11 +15,11 @@ app.use(cors(corsOptions));
 //     );
 //     next();
 //   });
-app.use(cors({
-    origin:["https://nomnom-frontend.vercel.app"],
-    methods:["GET","POST"],
-    credentials:true,
-}))
+// app.use(cors({
+//     origin:["https://nomnom-frontend.vercel.app"],
+//     methods:["GET","POST"],
+//     credentials:true,
+// }))
 
 // app.use((req,res,next)=>{
 //     res.setHeader('Access-Control-Allow-Origin','https://nomnom-frontend.vercel.app');
