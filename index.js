@@ -2,15 +2,19 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const mongodb = require("./db");
+const corsOptions = {
+  origin: "http://localhost:3000" // frontend URI (ReactJS)
+}
+app.use(cors(corsOptions));
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://nomnom-frontend.vercel.app/");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-  });
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+//   });
 
 // app.use((req,res,next)=>{
 //     res.setHeader('Access-Control-Allow-Origin','https://nomnom-frontend.vercel.app');
